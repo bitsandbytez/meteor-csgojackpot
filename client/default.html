@@ -1,0 +1,147 @@
+<head>
+  <link rel=”shortcut icon” type=”image/x-icon” href=”favicon.ico”>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  <script src="js/big_sockets.js"></script>
+</head>
+<template name="default">
+<main>
+<nav>
+  <div class="nav-wrapper grey darken-4">
+    <a href="/" class="brand-logo center"><img src="img/logo.png" class="logo img-responsive" alt="">
+    </a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li class="active white-text"><a href="/">Jackpot</a>
+      </li>
+
+    </ul>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="#">Wallet $0.00</a>
+      </li>
+
+       <li>
+      <!--  <% if (user) { %>
+         <a href="/profile">
+          ""<%= user.steam.displayName %>
+        </a>
+            <% if (!user.steam.displayName) { %>
+              <script>
+                alert('no user found');
+              </script>
+              <% } %>
+      </li>
+    --> <li><a href="/logout">Logout</a></li>
+                  <a href="/auth/steam" class="right steam-sign-in"><img src="http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_small.png" alt="">
+                  </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+
+    <div class="row winner">
+      <h1></h1>
+    </div>
+
+
+      <div class="row">
+          <div id="currentPotItems" class="players center" style="height:86px">
+            <ul>
+
+            </ul>
+          </div>
+      </div>
+      <div class="row">
+
+          <div class="center l4">
+            <!-- WHEEEEEEL -->
+            <input type="text" value="0" readonly="readonly" class="dial" data-width="400" data-height="400">
+
+
+          </div>
+          <div class="pot-total l4 hide-on-med-and-down left tooltipped" data-position="bottom" data-delay="50" data-tooltip="Jackpot Amount">
+            <h2>$0.00</h2>
+            <p>JACKPOT</p>
+          </div>
+          <div class="user-percentage l4 hide-on-med-and-down right tooltipped" data-position="bottom" data-delay="50" data-tooltip="Your Win %">
+            <h2>0.00%</h2>
+            <p>WIN %</p>
+          </div>
+  </div>
+        <div class="row center-align">
+          <p>10 items max - $5 min per item</p>
+        </div>
+        <div class="row center-align">
+          <!-- <% if (user) { %>
+
+            <p><a class="waves-effect waves-light btn-large green darken-4 modal-trigger" href="#agreeModal1">DEPOSIT</a>
+            </p>
+            <div id="agreeModal1" class="modal">
+              <div class="modal-content">
+                <h4>CSGO Parlor Agreement</h4>
+                <p>By sending a trade to CsgoParlor.com you are in agreement with our Terms and Conditions. When you submit the trade THERE IS NO ENTER QUEUE, we automatically put you in the queue as fast as possible. ALL TRADES ARE FINAL. We will not pre-determine your value for you, so know what you're depositing. Be CAUTIOUS of scammers! When you send or recieve items! There are MANY people who will try to steal from you.</p>
+              </div>
+              <div class="modal-footer">
+                <a href="https://steamcommunity.com/tradeoffer/new/?partner=184400818&token=vJxmdOaf
+
+" target="_blank" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+              </div>
+            </div>
+            <% } else{ %>
+            -->
+              <p>
+                <a class="waves-effect waves-light btn-large green darken-4 btn btn-default btn-lg" href="/auth/steam" >Log In To Deposit</a>
+              </p>
+              <!-- <% } %> -->
+        </div>
+        <div id="currentRound">
+          <div class="row roundInfo">
+          <ul class="collection">
+
+          </ul>
+        </div>
+        <div id="currentBetsSmall" class="row">
+          <ul class="collection">
+
+          </ul>
+        </div>
+        </div>
+
+</div>
+<div class="container">
+ <div class="row center"><h5>Previous Round</h5></div>
+  <div class="row previousRound">
+
+  </div>
+</div>
+</main>
+<footer class="grey darken-4">
+<ul class="right white-text" style="margin-right: 100px">
+  <li><a href="/play">How To Play</a></li>
+  <li><a href="/fair">Provably Fair</a></li>
+  <li><a href="/tos" target="_blank">TOS</a></li>
+  <li><a href="/support">Support</a></li>
+</ul>
+</footer>
+
+<script src="js/jquery.knob.js"></script>
+<script>
+setTimeout(function(){
+  $(".dial").knob({
+    'min': 0,
+    'max': 50,
+    'fgColor': '#b71c1c',
+    'format' : function (value) {
+   return value + '/50';
+},
+    'draw': function() {
+      $(this.i).css('font-size', '36pt');
+    }
+  });
+}, 50);
+</script>
+</template>
